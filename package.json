@@ -1,0 +1,20 @@
+{
+  "name": "desafio-frontend-swapi",
+  "version": "1.0.0",
+  "description": "Aplicação front-end desenvolvida com React que consome a API SWAPI para exibir personagens de Star Wars, com funcionalidades de listagem, filtro por nome e paginação.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guilhermetavarees/desafio-frontend-swapi.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/guilhermetavarees/desafio-frontend-swapi/issues"
+  },
+  "homepage": "https://github.com/guilhermetavarees/desafio-frontend-swapi#readme"
+}
