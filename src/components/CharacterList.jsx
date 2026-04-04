@@ -1,8 +1,8 @@
 import CharacterCard from "./CharacterCard"
 
-function CharacterList({ characters }) {
+function CharacterList({ characters, loading }) {
   return (
-    <div className="character-list">
+    <div className={`character-list${loading ? " loading" : ""}`}>
       {characters.map((character) => (
         <CharacterCard key={character.url} character={character} />
       ))}
