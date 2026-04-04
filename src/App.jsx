@@ -5,6 +5,7 @@ function App() {
   const [characters, setCharacters] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  const [search, setSearch] = useState("")
 
   useEffect(() => {
     setLoading(true)
@@ -36,10 +37,21 @@ function App() {
     )
   }
 
+  const filteredCharacters = characters.filter((character) =>
+    character.name.toLowerCase().includes(search.toLowerCase())
+  )
+
   return (
 
     <div className="container">
-      <CharacterList characters={characters} />
+
+      <input
+        type="text"
+        placeholder="Search character..."
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      />
+      <CharacterList characters={filteredCharacters} />
     </div>
   )
 }
