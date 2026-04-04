@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import CharacterList from "./components/CharacterList.jsx"
 
 function App() {
   const [characters, setCharacters] = useState([])
@@ -36,14 +37,9 @@ function App() {
   }
 
   return (
+
     <div className="container">
-      {characters.map((character) => (
-        <div key={character.url}>
-          <h2>{character.name}</h2>
-          <p>Height: {character.height}</p>
-          <p>Gender: {character.gender}</p>
-        </div>
-      ))}
+      <CharacterList characters={characters} />
     </div>
   )
 }
