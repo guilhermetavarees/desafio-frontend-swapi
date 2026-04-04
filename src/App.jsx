@@ -6,19 +6,22 @@ function App() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [search, setSearch] = useState("")
+  const [url, setUrl] = useState("https://swapi.py4e.com/api/people/")
+  const [nextPage, setNextPage] = useState(null)
+  const [prevPage, setPrevPage] = useState(null)
 
   useEffect(() => {
     setLoading(true)
 
-    fetch("https://swapi.py4e.com/api/people/")
-      .then(response => response.json())
-      .then(data => setCharacters(data.results))
-      .catch(error => {
-        console.error(error)
-        setError("Failed to load characters")
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        setCharacters(data.results)
+        setNextPage(data.next)
+        setPrevPage(data.previous)
       })
       .finally(() => setLoading(false))
-  }, [])
+  }, [url])
 
   if (loading) {
     return (
@@ -52,6 +55,22 @@ function App() {
         onChange={(e) => setSearch(e.target.value)}
       />
       <CharacterList characters={filteredCharacters} />
+
+      <div className="buttons">
+        <button
+          onClick={() => setUrl(prevPage)}
+          disabled={!prevPage}
+        >
+          Previous
+        </button>
+
+        <button
+          onClick={() => setUrl(nextPage)}
+          disabled={!nextPage}
+        >
+          Next
+        </button>
+      </div>
     </div>
   )
 }
