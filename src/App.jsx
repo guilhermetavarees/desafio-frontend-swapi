@@ -73,6 +73,12 @@ function App() {
 
       <CharacterList loading={loading} characters={filteredCharacters} />
 
+      {loading && characters.length === 0 && (
+        <div className="empty-state">
+          <span>Loading characters...</span>
+        </div>
+      )}
+
       <div className="buttons">
         <button onClick={() => setUrl(prevPage)} disabled={!prevPage || loading}>
           Previous
@@ -86,11 +92,6 @@ function App() {
       </div>
 
       <div className={`loading-overlay ${loading && characters.length > 0 ? "visible" : ""}`} />
-      {loading && characters.length === 0 && (
-        <div className="empty-state">
-          <span>Carregando personagens...</span>
-        </div>
-      )}
     </div>
   )
 }
